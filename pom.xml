@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.pkcs11</groupId>
-  <artifactId>jacknji11-df</artifactId>
+  <artifactId>jacknji11</artifactId>
   <version>1.0</version>
-  <name>jacknji11-df</name>
+  <name>jacknji11</name>
   <packaging>jar</packaging>
   
   <build>
