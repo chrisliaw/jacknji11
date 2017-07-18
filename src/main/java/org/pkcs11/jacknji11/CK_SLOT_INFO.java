@@ -54,7 +54,7 @@ public class CK_SLOT_INFO {
     public CK_VERSION hardwareVersion = new CK_VERSION();
     public CK_VERSION firmwareVersion = new CK_VERSION();
 
-    /** @return True, if the provided flag is set */
+    /** @return true, if the provided flag is set, false otherwise */
     public boolean isFlagSet(long CKF_FLAG) {
         return (flags & CKF_FLAG) != 0L;
     }

@@ -29,7 +29,6 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.pkcs11.jacknji11.jna.JNA;
 
 /**
  * Low-level java interface that maps to {@link NativeProvider} cryptoki calls.
@@ -62,7 +61,7 @@ import org.pkcs11.jacknji11.jna.JNA;
 public class C {
     private static final Log log = LogFactory.getLog(C.class);
 
-    public static NativeProvider NATIVE = new JNA();
+    public static NativeProvider NATIVE = null;
 
     private static final NativePointer NULL = new NativePointer(0);
 

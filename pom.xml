@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.pkcs11</groupId>
-  <artifactId>jacknji11</artifactId>
+  <artifactId>jacknji11-df</artifactId>
   <version>1.0</version>
-  <name>jacknji11</name>
+  <name>jacknji11-df</name>
   <packaging>jar</packaging>
   
   <build>
@@ -17,10 +17,18 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.0.2</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12.4</version>
+        <configuration>
+            <skipTests>true</skipTests>
+        </configuration>
+    </plugin>
     </plugins>
   </build>
 

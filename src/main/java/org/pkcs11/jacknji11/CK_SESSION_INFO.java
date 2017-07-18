@@ -52,7 +52,7 @@ public class CK_SESSION_INFO {
     public long flags;
     public long ulDeviceError;
 
-    /** @return True, if the provided flag is set */
+    /** @return true, if the provided flag is set, false otherwise */
     public boolean isFlagSet(long CKF_FLAG) {
         return (flags & CKF_FLAG) != 0L;
     }

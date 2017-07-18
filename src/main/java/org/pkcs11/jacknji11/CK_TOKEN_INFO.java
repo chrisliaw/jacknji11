@@ -81,7 +81,7 @@ public class CK_TOKEN_INFO {
     public CK_VERSION firmwareVersion = new CK_VERSION();
     public byte[] utcTime = new byte[16];
 
-    /** @return True, if the provided flag is set */
+    /** @return true, if the provided flag is set, false otherwise */
     public boolean isFlagSet(long CKF_FLAG) {
         return (flags & CKF_FLAG) != 0L;
     }
