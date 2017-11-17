@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CK_INFO;
 
 import com.sun.jna.NativeLong;
@@ -65,5 +67,10 @@ public class JNA_CK_INFO extends Structure {
         info.libraryDescription = libraryDescription;
         libraryVersion.writeTo(info.libraryVersion);
         return info;
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] {"cryptokiVersion", "manufacturerID", "flags", "libraryDescription", "libraryVersion"});
     }
 }

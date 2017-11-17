@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CK_TOKEN_INFO;
 
 import com.sun.jna.NativeLong;
@@ -92,5 +94,10 @@ public class JNA_CK_TOKEN_INFO extends Structure {
         firmwareVersion.writeTo(info.firmwareVersion);
         info.utcTime = utcTime;
         return info;
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] {"label", "manufacturerID", "model", "serialNumber", "flags", "ulMaxSessionCount", "ulSessionCount", "ulMaxRwSessionCount", "ulRwSessionCount", "ulMaxPinLen", "ulMinPinLen", "ulTotalPublicMemory", "ulFreePublicMemory", "ulTotalPrivateMemory", "ulFreePrivateMemory", "hardwareVersion", "firmwareVersion", "utcTime"});
     }
 }

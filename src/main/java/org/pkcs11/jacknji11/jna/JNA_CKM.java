@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CKM;
 
 import com.sun.jna.Memory;
@@ -47,5 +49,10 @@ public class JNA_CKM extends Structure {
         }
         ulParameterLen = new NativeLong(len);
         return this;
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] {"mechanism", "pParameter", "ulParameterLen"});
     }
 }

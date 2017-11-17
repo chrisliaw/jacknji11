@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CK_VERSION;
 
 import com.sun.jna.Structure;
@@ -43,5 +45,10 @@ public class JNA_CK_VERSION extends Structure {
         version.major = major;
         version.minor = minor;
         return version;
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] {"major", "minor"});
     }
 }

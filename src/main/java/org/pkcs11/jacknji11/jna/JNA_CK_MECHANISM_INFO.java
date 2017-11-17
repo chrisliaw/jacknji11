@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CK_MECHANISM_INFO;
 
 import com.sun.jna.NativeLong;
@@ -47,5 +49,10 @@ public class JNA_CK_MECHANISM_INFO extends Structure {
         info.ulMaxKeySize = ulMaxKeySize.intValue();
         info.flags = flags.intValue();
         return info;
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] { "ulMinKeySize", "ulMaxKeySize", "flags"});
     }
 }

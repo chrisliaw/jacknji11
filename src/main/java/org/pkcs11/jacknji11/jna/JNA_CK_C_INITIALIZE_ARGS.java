@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CK_C_INITIALIZE_ARGS;
 import org.pkcs11.jacknji11.CK_C_INITIALIZE_ARGS.CK_CREATEMUTEX;
 import org.pkcs11.jacknji11.CK_C_INITIALIZE_ARGS.CK_DESTROYMUTEX;
@@ -143,5 +145,10 @@ public class JNA_CK_C_INITIALIZE_ARGS extends Structure {
          * @return {@link CKR} return code
          */
         NativeLong invoke(Pointer mutex);
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] {"createMutex", "destroyMutex", "lockMutex", "unlockMutex", "flags", "pReserved"});
     }
 }

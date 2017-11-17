@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CK_SLOT_INFO;
 
 import com.sun.jna.NativeLong;
@@ -53,5 +55,10 @@ public class JNA_CK_SLOT_INFO extends Structure {
         hardwareVersion.writeTo(info.hardwareVersion);
         firmwareVersion.writeTo(info.firmwareVersion);
         return info;
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] { "slotDescription", "manufacturerID", "flags", "hardwareVersion", "firmwareVersion"});
     }
 }

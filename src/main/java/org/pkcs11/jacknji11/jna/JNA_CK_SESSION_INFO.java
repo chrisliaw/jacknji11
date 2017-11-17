@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jna;
 
+import java.util.List;
+
 import org.pkcs11.jacknji11.CK_SESSION_INFO;
 
 import com.sun.jna.NativeLong;
@@ -50,5 +52,10 @@ public class JNA_CK_SESSION_INFO extends Structure {
         info.flags = flags.intValue();
         info.ulDeviceError = ulDeviceError.intValue();
         return info;
+    }
+    
+    @Override
+    protected List<String> getFieldOrder() {
+        return java.util.Arrays.asList(new String[] {"slotID", "state", "flags", "ulDeviceError"});
     }
 }
