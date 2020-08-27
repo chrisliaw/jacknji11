@@ -21,6 +21,8 @@
 
 package org.pkcs11.jacknji11.jffi;
 
+import org.pkcs11.jacknji11.C;
+
 import jnr.ffi.Address;
 import jnr.ffi.Library;
 import jnr.ffi.Pointer;
@@ -34,7 +36,16 @@ import jnr.ffi.byref.NativeLongByReference;
  */
 public class JFFINative {
     static {
-        Library.loadLibrary(JFFINative.class, "cryptoki");
+		String pkcs11Lib = C.ReadPKCS11Library();
+		if (pkcs11Lib != null && !pkcs11Lib.isEmpty()) {
+	        Library.loadLibrary(JFFINative.class, pkcs11Lib);
+		}
+		else
+		{
+	        Library.loadLibrary(JFFINative.class, "cryptoki");
+		}
+    	    	
+//        Library.loadLibrary(JFFINative.class, "cryptoki");
     }
 
     public static native int C_Initialize(@In JFFI_CK_C_INITIALIZE_ARGS pInitArgs);

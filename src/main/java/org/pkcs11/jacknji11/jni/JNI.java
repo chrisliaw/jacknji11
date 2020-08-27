@@ -21,6 +21,7 @@
 
 package org.pkcs11.jacknji11.jni;
 
+import org.pkcs11.jacknji11.C;
 import org.pkcs11.jacknji11.CKA;
 import org.pkcs11.jacknji11.CKM;
 import org.pkcs11.jacknji11.CK_C_INITIALIZE_ARGS;
@@ -37,7 +38,17 @@ import org.pkcs11.jacknji11.ULong;
 
 public class JNI implements NativeProvider {
     static {
-        System.loadLibrary("jacknji11");
+		String pkcs11Lib = C.ReadPKCS11Library();
+		if (pkcs11Lib != null && !pkcs11Lib.isEmpty()) {
+	        System.loadLibrary(pkcs11Lib);
+		}
+		else
+		{
+			// Standardize the use of 'cryptoki' as JNA and JFFI are loading 'cryptoki'
+	        System.loadLibrary("cryptoki");
+		}
+    	
+//        System.loadLibrary("jacknji11");
         init();
         ULong.ULONG_SIZE = ULongSize() == 4 ? ULong.ULongSize.ULONG4 : ULong.ULongSize.ULONG8;
     }

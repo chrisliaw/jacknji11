@@ -40,6 +40,7 @@ import org.pkcs11.jacknji11.CK_SLOT_INFO;
 import org.pkcs11.jacknji11.CK_TOKEN_INFO;
 import org.pkcs11.jacknji11.Hex;
 import org.pkcs11.jacknji11.LongRef;
+import org.pkcs11.jacknji11.jni.JNI;
 
 import junit.framework.TestCase;
 
@@ -59,6 +60,7 @@ public class CryptokiTest extends TestCase {
 //    private static final long INITSLOT = 18;
 
     public void setUp() {
+    	System.setProperty("pkcs11.library.path", "/usr/lib/libeToken.so");
         CE.Initialize();
     }
 
@@ -69,36 +71,36 @@ public class CryptokiTest extends TestCase {
     public void testGetInfo() {
         CK_INFO info = new CK_INFO();
         CE.GetInfo(info);
-//        System.out.println(info);
+        System.out.println(info);
     }
 
     public void testGetSlotList() {
         long[] slots = CE.GetSlotList(true);
-//        System.out.println("slots: " + Arrays.toString(slots));
+        System.out.println("slots: " + Arrays.toString(slots));
     }
 
     public void testGetSlotInfo() {
         CK_SLOT_INFO info = new CK_SLOT_INFO();
         CE.GetSlotInfo(TESTSLOT, info);
-//        System.out.println(info);
+        System.out.println(info);
     }
 
     public void testGetTokenInfo() {
         CK_TOKEN_INFO info = new CK_TOKEN_INFO();
         CE.GetTokenInfo(TESTSLOT, info);
-//        System.out.println(info);
+        System.out.println(info);
     }
 
     public void testGetMechanismList() {
         for (long mech : CE.GetMechanismList(TESTSLOT)) {
-//            System.out.println(String.format("0x%08x : %s", mech, CKM.L2S(mech)));
+            System.out.println(String.format("0x%08x : %s", mech, CKM.L2S(mech)));
         }
     }
 
     public void testGetMechanismInfo() {
         CK_MECHANISM_INFO info = new CK_MECHANISM_INFO();
         CE.GetMechanismInfo(TESTSLOT, CKM.AES_CBC, info);
-//        System.out.println(info);
+        System.out.println(info);
     }
 
     public void testInitTokenInitPinSetPin() {
